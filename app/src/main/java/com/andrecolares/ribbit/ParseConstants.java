@@ -18,6 +18,7 @@ public final class ParseConstants {
     public static final String TYPE_VIDEO = "video";
     public static final String TYPE_TEXT_MESSAGE = "textMessage";
 
+
 }
 
 
