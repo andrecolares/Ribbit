@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
 import com.parse.ParseUser;
-import com.teamtreehouse.ribbit.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -218,6 +217,8 @@ public class MainActivity extends FragmentActivity implements
                     .setTabListener(this));
         }
     }
+
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.teamtreehouse.ribbit.R;
 
 public class LoginActivity extends Activity {
 

@@ -12,7 +12,6 @@ import android.widget.EditText;
 import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
-import com.teamtreehouse.ribbit.R;
 
 public class SignUpActivity extends Activity {
 

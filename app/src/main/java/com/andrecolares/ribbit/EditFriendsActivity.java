@@ -17,7 +17,6 @@ import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-import com.teamtreehouse.ribbit.R;
 
 import java.util.List;
 

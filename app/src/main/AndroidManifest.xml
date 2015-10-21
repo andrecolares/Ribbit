@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.teamtreehouse.ribbit"
-          android:versionCode="1"
-          android:versionName="1.0" >
+    package="com.andrecolares.ribbit"
+    android:versionCode="1"
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -16,14 +16,17 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
-        android:name="com.andrecolares.ribbit.RibbitApplication"
+        android:name=".RibbitApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.andrecolares.ribbit.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -33,32 +36,42 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.andrecolares.ribbit.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.andrecolares.ribbit.SignUpActivity"
+            android:name=".SignUpActivity"
             android:label="@string/title_activity_sign_up"
-            android:parentActivityName="com.andrecolares.ribbit.LoginActivity"
+            android:parentActivityName=".LoginActivity"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.andrecolares.ribbit.EditFriendsActivity"
+            android:name=".EditFriendsActivity"
             android:label="@string/title_activity_edit_friends"
-            android:parentActivityName="com.andrecolares.ribbit.MainActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.andrecolares.ribbit.MainActivity" />
         </activity>
         <activity
-            android:name="com.andrecolares.ribbit.RecipientsActivity"
+            android:name=".RecipientsActivity"
             android:label="@string/title_activity_recipients"
-            android:parentActivityName="com.andrecolares.ribbit.MainActivity" android:screenOrientation="portrait">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.andrecolares.ribbit.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ViewImageActivity"
+            android:label="@string/title_activity_view_image"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.andrecolares.ribbit.MainActivity"
+                android:screenOrientation="portrait"/>
         </activity>
     </application>
 
