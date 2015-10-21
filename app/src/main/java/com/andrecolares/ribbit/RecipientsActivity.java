@@ -1,6 +1,5 @@
 package com.andrecolares.ribbit;
 
-
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -19,6 +18,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.teamtreehouse.ribbit.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +74,8 @@ public class RecipientsActivity extends ListActivity {
                             android.R.layout.simple_list_item_checked,
                             usernames);
                     setListAdapter(adapter);
-                } else {
+                }
+                else {
                     Log.e(TAG, e.getMessage());
                     AlertDialog.Builder builder = new AlertDialog.Builder(RecipientsActivity.this);
                     builder.setMessage(e.getMessage())
@@ -99,7 +100,7 @@ public class RecipientsActivity extends ListActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_recipients, menu);
+        getMenuInflater().inflate(R.menu.recipients, menu);
         mSendMenuItem = menu.getItem(0);
         return true;
     }

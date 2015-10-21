@@ -4,6 +4,9 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.teamtreehouse.ribbit.R;
+
 import java.util.Locale;
 
 /**
@@ -22,23 +25,21 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
-        // Return a InboxFragment (defined as a static inner class below).
+        // Return a DummySectionFragment (defined as a static inner class
+        // below) with the page number as its lone argument.
 
-        switch (position) {
+        switch(position) {
             case 0:
                 return new InboxFragment();
-
             case 1:
                 return new FriendsFragment();
-
-            // return the new FriendsFragment() here
         }
+
         return null;
     }
 
     @Override
     public int getCount() {
-        // Show 2 total pages.
         return 2;
     }
 

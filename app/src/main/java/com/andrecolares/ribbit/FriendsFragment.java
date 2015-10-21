@@ -14,9 +14,9 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseRelation;
 import com.parse.ParseUser;
+import com.teamtreehouse.ribbit.R;
 
 import java.util.List;
-
 
 public class FriendsFragment extends ListFragment {
 
@@ -49,26 +49,24 @@ public class FriendsFragment extends ListFragment {
         query.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> friends, ParseException e) {
-
                 getActivity().setProgressBarIndeterminateVisibility(false);
-
 
                 if (e == null) {
                     mFriends = friends;
 
                     String[] usernames = new String[mFriends.size()];
                     int i = 0;
-                    for (ParseUser user : mFriends) {
+                    for(ParseUser user : mFriends) {
                         usernames[i] = user.getUsername();
                         i++;
                     }
-
                     ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                            getListView().getContext(), android.R.layout.simple_list_item_1,
+                            getListView().getContext(),
+                            android.R.layout.simple_list_item_1,
                             usernames);
-
                     setListAdapter(adapter);
-                } else {
+                }
+                else {
                     Log.e(TAG, e.getMessage());
                     AlertDialog.Builder builder = new AlertDialog.Builder(getListView().getContext());
                     builder.setMessage(e.getMessage())
@@ -78,8 +76,8 @@ public class FriendsFragment extends ListFragment {
                     dialog.show();
                 }
             }
-
         });
     }
 
 }
+
