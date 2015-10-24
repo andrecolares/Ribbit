@@ -1,5 +1,6 @@
 package com.andrecolares.ribbit;
 
+import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -92,6 +93,7 @@ public class EditFriendsActivity extends ListActivity {
      */
     private void setupActionBar() {
 
+        ActionBar actionBar = getActionBar();
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
