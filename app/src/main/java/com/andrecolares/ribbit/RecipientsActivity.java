@@ -27,28 +27,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipientsActivity extends ListActivity {
-
     public static final String TAG = RecipientsActivity.class.getSimpleName();
 
+    protected List<ParseUser> mFriends;
     protected ParseRelation<ParseUser> mFriendsRelation;
     protected ParseUser mCurrentUser;
-    protected List<ParseUser> mFriends;
+
     protected MenuItem mSendMenuItem;
-    protected Uri mMediaUri;
     protected String mFileType;
+    protected Uri mMediaUri;
+    protected String mTextMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_recipients);
-        // Show the Up button in the action bar.
-        setupActionBar();
+
+
 
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
 
-        mMediaUri = getIntent().getData();
+
         mFileType = getIntent().getExtras().getString(ParseConstants.KEY_FILE_TYPE);
+
+        if ( mFileType.equals(ParseConstants.TYPE_TEXT_MESSAGE) ) {
+            mTextMessage = getIntent().getExtras().getString(ParseConstants.KEY_TEXT);
+        } else {
+            mMediaUri = getIntent().getData();
+        }
     }
 
     @Override
@@ -72,7 +80,7 @@ public class RecipientsActivity extends ListActivity {
 
                     String[] usernames = new String[mFriends.size()];
                     int i = 0;
-                    for(ParseUser user : mFriends) {
+                    for (ParseUser user : mFriends) {
                         usernames[i] = user.getUsername();
                         i++;
                     }
@@ -81,8 +89,7 @@ public class RecipientsActivity extends ListActivity {
                             android.R.layout.simple_list_item_checked,
                             usernames);
                     setListAdapter(adapter);
-                }
-                else {
+                } else {
                     Log.e(TAG, e.getMessage());
                     AlertDialog.Builder builder = new AlertDialog.Builder(RecipientsActivity.this);
                     builder.setMessage(e.getMessage())
@@ -98,17 +105,18 @@ public class RecipientsActivity extends ListActivity {
     /**
      * Set up the {@link android.app.ActionBar}.
      */
-    private void setupActionBar() {
+    /*private void setupActionBar() {
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.recipients, menu);
         mSendMenuItem = menu.getItem(0);
+        mSendMenuItem.setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+
         return true;
     }
 
@@ -148,13 +156,11 @@ public class RecipientsActivity extends ListActivity {
     @Override
     protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-
-        if (l.getCheckedItemCount() > 0) {
+        if ( l.getCheckedItemCount() > 0 ) {
+            // only show Send button when recipients are selected
             mSendMenuItem.setVisible(true);
-        }
-        else {
+        } else
             mSendMenuItem.setVisible(false);
-        }
     }
 
     protected ParseObject createMessage() {

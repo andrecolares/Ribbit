@@ -1,6 +1,5 @@
 package com.andrecolares.ribbit;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -8,7 +7,6 @@ import android.support.v4.app.NavUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -33,10 +31,8 @@ public class EditFriendsActivity extends ListActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
         setContentView(R.layout.activity_edit_friends);
-        // Show the Up button in the action bar.
-        setupActionBar();
+
 
         getListView().setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
     }
@@ -91,12 +87,12 @@ public class EditFriendsActivity extends ListActivity {
     /**
      * Set up the {@link android.app.ActionBar}.
      */
-    private void setupActionBar() {
+    /*private void setupActionBar() {
 
         ActionBar actionBar = getActionBar();
         getActionBar().setDisplayHomeAsUpEnabled(true);
 
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
